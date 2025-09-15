@@ -31,7 +31,7 @@ services:
       - key: DB_TYPE
         value: postgresdb
       - key: DB_POSTGRESDB_CONNECTION_STRING
-        value: postgresql://mary:46tqndTzglqecmDCm2TiSshLn3iuZFrC@dpg-d2t0uqnfte5s739otk30-a.oregon-postgres.render.com:5432/n8n_postgres_ys8g?sslmode=require
+        value: "postgresql://mary:46tqndTzglqecmDCm2TiSshLn3iuZFrC@dpg-d2t0uqnfte5s739otk30-a.oregon-postgres.render.com:5432/n8n_postgres_ys8g?sslmode=require"
       # Opcional: Configuración adicional para n8n (ajusta N8N_HOST y WEBHOOK_URL después del deploy con la URL real)
       - key: N8N_HOST
         value: n8n-service.onrender.com
