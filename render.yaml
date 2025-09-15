@@ -37,9 +37,9 @@ services:
       - key: DB_POSTGRESDB_DATABASE
         value: n8n_postgres_ys8g  # Nombre de tu base de datos existente
       - key: DB_POSTGRESDB_HOST
-        value: tu-host-interno.pg.render.com  # Host interno de tu DB (cópialo de la Internal Database URL)
+        value: dpg-d2t0uqnfte5s739otk30-a  # Host interno de tu DB (de la Internal Database URL)
       - key: DB_POSTGRESDB_PASSWORD
-        value: tu_contraseña  # Contraseña de tu DB
+        value: 46tqndTzglqecmDCm2TiSshLn3iuZFrC  # Contraseña real de tu DB
       - key: DB_POSTGRESDB_USER
         value: mary  # Usuario de tu DB
       - key: DB_POSTGRESDB_PORT
@@ -47,4 +47,10 @@ services:
       - key: DB_POSTGRESDB_SSLMODE
         value: require  # Forzar SSL para evitar errores SCRAM
 
-      # Opc
+      # Opcional: Configuración adicional para n8n
+      - key: N8N_HOST
+        value: n8n-service.onrender.com  # URL de tu servicio (ajusta después del deploy)
+      - key: N8N_PORT
+        value: 5678  # Puerto interno de n8n
+      - key: WEBHOOK_URL
+        value: https://n8n-service.onrender.com/  # Para webhooks (ajusta después del deploy)
