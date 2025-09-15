@@ -10,7 +10,7 @@
 services:
   - type: web
     plan: free
-    port: 5678  # Añade esta línea para vincular el puerto
+    port: 5678  # Vincula el puerto explícitamente
     runtime: image
     name: n8n-service
     image:
@@ -27,27 +27,15 @@ services:
       # encrypted with the previous value.
       - key: N8N_ENCRYPTION_KEY
         generateValue: true
-
-      # Configura manualmente los detalles de tu base de datos existente
+      # Configura la conexión completa a la DB para evitar problemas de SSL/SCRAM
       - key: DB_TYPE
         value: postgresdb
-      - key: DB_POSTGRESDB_DATABASE
-        value: n8n_postgres_ys8g  # Nombre de tu base de datos existente
-      - key: DB_POSTGRESDB_HOST
-        value: dpg-d2t0uqnfte5s739otk30-a  # Host interno de tu DB (de la Internal Database URL)
-      - key: DB_POSTGRESDB_PASSWORD
-        value: 46tqndTzglqecmDCm2TiSshLn3iuZFrC  # Contraseña real de tu DB
-      - key: DB_POSTGRESDB_USER
-        value: mary  # Usuario de tu DB
-      - key: DB_POSTGRESDB_PORT
-        value: 5432  # Puerto estándar de PostgreSQL
-      - key: DB_POSTGRESDB_SSLMODE
-        value: require  # Forzar SSL para evitar errores SCRAM
-
-      # Opcional: Configuración adicional para n8n
+      - key: DB_POSTGRESDB_CONNECTION_STRING
+        value: postgresql://mary:46tqndTzglqecmDCm2TiSshLn3iuZFrC@dpg-d2t0uqnfte5s739otk30-a.oregon-postgres.render.com:5432/n8n_postgres_ys8g?sslmode=require
+      # Opcional: Configuración adicional para n8n (ajusta N8N_HOST y WEBHOOK_URL después del deploy con la URL real)
       - key: N8N_HOST
-        value: n8n-service.onrender.com  # URL de tu servicio (ajusta después del deploy)
+        value: n8n-service.onrender.com
       - key: N8N_PORT
-        value: 5678  # Puerto interno de n8n
+        value: 5678
       - key: WEBHOOK_URL
-        value: https://n8n-service.onrender.com/  # Para webhooks (ajusta después del deploy)
+        value: https://n8n-service.onrender.com/
