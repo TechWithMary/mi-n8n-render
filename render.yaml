@@ -10,29 +10,18 @@
 services:
   - type: web
     plan: free
-    port: 5678  # Vincula el puerto explícitamente
+    port: 5678
     runtime: image
     name: n8n-service
     image:
       url: docker.io/n8nio/n8n:latest
-    # All environment variables defined below are required!
-    #
-    # You can define additional environment variables as needed.
     envVars:
-      # Generates a base64-encoded key for
-      # encrypting credentials in n8n
-      #
-      # Do not modify this value after it's generated!
-      # If you do, you'll lose access to all credentials
-      # encrypted with the previous value.
       - key: N8N_ENCRYPTION_KEY
         generateValue: true
-      # Configura la conexión completa a la DB para evitar problemas de SSL/SCRAM
       - key: DB_TYPE
         value: postgresdb
       - key: DB_POSTGRESDB_CONNECTION_STRING
         value: "postgresql://mary:46tqndTzglqecmDCm2TiSshLn3iuZFrC@dpg-d2t0uqnfte5s739otk30-a.oregon-postgres.render.com:5432/n8n_postgres_ys8g?sslmode=require"
-      # Opcional: Configuración adicional para n8n (ajusta N8N_HOST y WEBHOOK_URL después del deploy con la URL real)
       - key: N8N_HOST
         value: n8n-service.onrender.com
       - key: N8N_PORT
