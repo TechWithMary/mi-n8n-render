@@ -31,35 +31,20 @@ services:
       - key: N8N_ENCRYPTION_KEY
         generateValue: true
 
-      # These automatically populate connection details 
-      # for the Render Postgres database defined below
+      # Configura manualmente los detalles de tu base de datos existente
       - key: DB_TYPE
         value: postgresdb
       - key: DB_POSTGRESDB_DATABASE
-        fromDatabase:
-          name: n8n-db
-          property: database
+        value: n8n_postgres_ys8g  # Nombre de tu base de datos existente
       - key: DB_POSTGRESDB_HOST
-        fromDatabase:
-          name: n8n-db
-          property: host
+        value: tu-host-interno.pg.render.com  # Host interno de tu DB (cópialo de la Internal Database URL)
       - key: DB_POSTGRESDB_PASSWORD
-        fromDatabase:
-          name: n8n-db
-          property: password
+        value: tu_contraseña  # Contraseña de tu DB
       - key: DB_POSTGRESDB_USER
-        fromDatabase:
-          name: n8n-db
-          property: user
+        value: mary  # Usuario de tu DB
+      - key: DB_POSTGRESDB_PORT
+        value: 5432  # Puerto estándar de PostgreSQL
+      - key: DB_POSTGRESDB_SSLMODE
+        value: require  # Forzar SSL para evitar errores SCRAM
 
-databases:
-  - name: n8n-db
-    plan: free
-    # The free instance type is limited to 1 GB of disk
-    # space.
-    #
-    # If you later upgrade to a paid instance type, you can
-    # increase the disk size to any multiple of 5 GB by
-    # setting the `diskSizeGB` property.
-    #
-    # diskSizeGB: 5
+      # Opc
