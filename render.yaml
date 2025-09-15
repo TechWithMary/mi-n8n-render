@@ -24,7 +24,5 @@ services:
         value: "postgresql://mary:46tqndTzglqecmDCm2TiSshLn3iuZFrC@dpg-d2t0uqnfte5s739otk30-a.oregon-postgres.render.com:5432/n8n_postgres_ys8g?sslmode=require"
       - key: N8N_HOST
         value: n8n-service.onrender.com
-      - key: N8N_PORT
-        value: 5678
       - key: WEBHOOK_URL
         value: https://n8n-service.onrender.com/
